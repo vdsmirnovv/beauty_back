@@ -27,57 +27,57 @@ def get_db():
         db.close()
 
 # Эндпоинт для создания нового пользователя
-@app.post("/users/", response_model=schemas.User)
+@app.post("/api/users/", response_model=schemas.User)
 def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
     return crud.create_user(db=db, user=user)
 
 # Эндпоинт для получения списка пользователей
-@app.get("/users/", response_model=list[schemas.User])
+@app.get("/api/users/", response_model=list[schemas.User])
 def get_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return crud.get_users(db=db, skip=skip, limit=limit)
 
 # Эндпоинт для получения пользователя по ID
-@app.get("/users/{user_id}", response_model=schemas.User)
+@app.get("/api/users/{user_id}", response_model=schemas.User)
 def get_user(user_id: int, db: Session = Depends(get_db)):
     return crud.get_user(db=db, user_id=user_id)
 
 # Эндпоинт для создания новой услуги
-@app.post("/services/", response_model=schemas.Service)
+@app.post("/api/services/", response_model=schemas.Service)
 def create_service(service: schemas.ServiceCreate, db: Session = Depends(get_db)):
     return crud.create_service(db=db, service=service)
 
 # Эндпоинт для получения списка услуг
-@app.get("/services/", response_model=list[schemas.Service])
+@app.get("/api/services/", response_model=list[schemas.Service])
 def get_services(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return crud.get_services(db=db, skip=skip, limit=limit)
 
 # Эндпоинт для редактирования услуги
-@app.put("/services/{service_id}", response_model=schemas.Service)
+@app.put("/api/services/{service_id}", response_model=schemas.Service)
 def update_service(service_id: int, service: schemas.ServiceUpdate, db: Session = Depends(get_db)):
     return crud.update_service(db=db, service_id=service_id, service=service)
 
 # Эндпоинт для удаления услуги
-@app.delete("/services/{service_id}", response_model=schemas.Service)
+@app.delete("/api/services/{service_id}", response_model=schemas.Service)
 def delete_service(service_id: int, db: Session = Depends(get_db)):
     return crud.delete_service(db=db, service_id=service_id)
 
 # Эндпоинт для создания записи (бронирования)
-@app.post("/bookings/", response_model=schemas.Booking)
+@app.post("/api/bookings/", response_model=schemas.Booking)
 def create_booking(booking: schemas.BookingCreate, db: Session = Depends(get_db)):
     return crud.create_booking(db=db, booking=booking)
 
 # Эндпоинт для получения списка записей
-@app.get("/bookings/", response_model=list[schemas.Booking])
+@app.get("/api/bookings/", response_model=list[schemas.Booking])
 def get_bookings(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return crud.get_bookings(db=db, skip=skip, limit=limit)
 
 # Эндпоинт для редактирования записи
-@app.put("/bookings/{booking_id}", response_model=schemas.Booking)
+@app.put("/api/bookings/{booking_id}", response_model=schemas.Booking)
 def update_booking(booking_id: int, booking: schemas.BookingUpdate, db: Session = Depends(get_db)):
     return crud.update_booking(db=db, booking_id=booking_id, booking=booking)
 
 # Эндпоинт для удаления записи
-@app.delete("/bookings/{booking_id}", response_model=schemas.Booking)
+@app.delete("/api/bookings/{booking_id}", response_model=schemas.Booking)
 def delete_booking(booking_id: int, db: Session = Depends(get_db)):
     return crud.delete_booking(db=db, booking_id=booking_id)
 
