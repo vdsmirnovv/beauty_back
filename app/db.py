@@ -4,7 +4,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 # Строка подключения к базе данных
-SQLALCHEMY_DATABASE_URL = "postgresql://beauty_user:Hujxn1cY@localhost/beauty_studio"
+SQLALCHEMY_DATABASE_URL = "postgresql://postgres:uftHgAOGeXIkjAIRjkVuBwjqvSETmdzM@postgres.railway.internal:5432/railway"
 
 # Создаём движок подключения (без параметра check_same_thread)
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
