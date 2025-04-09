@@ -19,6 +19,9 @@ def get_users(db: Session, skip: int = 0, limit: int = 100):
 def get_user(db: Session, user_id: int):
     return db.query(models.User).filter(models.User.id == user_id).first()
 
+def get_user_by_telegram_id(db: Session, telegram_id: str):
+    return db.query(models.User).filter(models.User.telegram_id == telegram_id).first()
+
 # --- Услуги ---
 def create_service(db: Session, service: schemas.ServiceCreate):
     db_service = models.Service(
