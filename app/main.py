@@ -41,6 +41,13 @@ def get_users(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 def get_user(user_id: int, db: Session = Depends(get_db)):
     return crud.get_user(db=db, user_id=user_id)
 
+@app.get("/api/users/by-telegram-id/{telegram_id}", response_model=schemas.User)
+def get_user_by_telegram_id(telegram_id: str, db: Session = Depends(get_db)):
+    user = crud.get_user_by_telegram_id(db, telegram_id)
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    return user
+
 # Эндпоинт для создания новой услуги
 @app.post("/api/services/", response_model=schemas.Service)
 def create_service(service: schemas.ServiceCreate, db: Session = Depends(get_db)):
