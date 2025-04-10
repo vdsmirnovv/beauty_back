@@ -10,7 +10,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
                     level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Токен, который ты получишь у BotFather
+
 TELEGRAM_TOKEN = '7237687305:AAHv5aZn2OYWIf9AMY_SAK1Gltv9cVwOI-w'
 
 # Функция /start, которая вызывается при старте
@@ -40,7 +40,7 @@ async def register(update: Update, context: CallbackContext):
             phone_number=phone_number
         ))
 
-        # Отправляем сообщение с подтверждением регистрации
+
         await update.message.reply_text(
             f"Ты зарегистрирован как {new_user.full_name}!\n"
             f"Номер телефона: {new_user.phone_number}. Регистрация прошла успешно!"
