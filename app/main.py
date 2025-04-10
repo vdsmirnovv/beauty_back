@@ -5,7 +5,7 @@ from app.db import SessionLocal, engine
 import app.telegram_bot
 from fastapi.middleware.cors import CORSMiddleware
 
-# Инициализация FastAPI
+
 app = FastAPI()
 
 app.add_middleware(
